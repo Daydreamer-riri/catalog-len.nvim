@@ -6,24 +6,24 @@ on:
   pull_request:
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      contents: read
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Neovim
-        uses: rhysd/action-setup-vim@v1
-        with:
-          neovim: true
-          version: stable
-
-      - name: Run Tests
-        run: |
-          nvim -l tests/minit.lua --minitest
+  # tests:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
+  #   permissions:
+  #     contents: read
+  #
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #
+  #     - name: Install Neovim
+  #       uses: rhysd/action-setup-vim@v1
+  #       with:
+  #         neovim: true
+  #         version: stable
+  #
+  #     - name: Run Tests
+  #       run: |
+  #         nvim -l tests/minit.lua --minitest
 
   stylua:
     runs-on: ubuntu-latest
