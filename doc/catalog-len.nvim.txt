@@ -1,0 +1,57 @@
+*catalog-len.nvim.txt*        Show inlay version for PNPM/Yarn/Bun catalogs
+
+==============================================================================
+CONTENTS                                          *catalog-len.nvim-contents*
+
+1. Introduction ............................ |catalog-len.nvim-introduction|
+2. Requirements ............................ |catalog-len.nvim-requirements|
+3. Installation ............................ |catalog-len.nvim-installation|
+4. Configuration ........................... |catalog-len.nvim-configuration|
+5. Usage ................................... |catalog-len.nvim-usage|
+
+==============================================================================
+1. INTRODUCTION                               *catalog-len.nvim-introduction*
+
+catalog-len.nvim is a Neovim plugin that shows inlay version and
+go-to-definition for PNPM/Yarn/Bun catalogs.
+
+==============================================================================
+2. REQUIREMENTS                               *catalog-len.nvim-requirements*
+
+- Neovim >= 0.10.0
+
+==============================================================================
+3. INSTALLATION                               *catalog-len.nvim-installation*
+
+Using lazy.nvim: >lua
+    {
+      "Daydreamer-riri/catalog-len.nvim",
+      opts = {},
+    }
+<
+
+==============================================================================
+4. CONFIGURATION                             *catalog-len.nvim-configuration*
+
+Default configuration: >lua
+    {
+      -- Enable the plugin
+      enabled = true,
+      -- Debounce time in milliseconds for virtual text updates
+      debounce = 200,
+      -- Virtual text style
+      virtual_text = {
+        prefix = " ",
+        hl_group = "Comment",
+      },
+    }
+<
+
+==============================================================================
+5. USAGE                                             *catalog-len.nvim-usage*
+
+The plugin will automatically detect package catalogs and show inline
+version information.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
