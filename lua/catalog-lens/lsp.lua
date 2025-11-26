@@ -12,6 +12,8 @@ function M.setup(server_path)
 
   local ns = vim.api.nvim_create_namespace("catalog_inlay_hints")
 
+  local color_util = require("catalog-lens.color")
+
   local orig_handler = vim.lsp.handlers["textDocument/inlayHint"]
   vim.lsp.handlers["textDocument/inlayHint"] = function(err, result, ctx, config)
     local client = vim.lsp.get_client_by_id(ctx.client_id)
@@ -37,10 +39,20 @@ function M.setup(server_path)
         end
       end
 
+      ---@type string
+      local color = hint.extraData.color
+      ---@type string
+      local catalog = hint.extraData.catalog
       vim.api.nvim_buf_set_extmark(ctx.bufnr, ns, l, c, {
-        virt_text = { { label, "Comment" } },
+        virt_text = { { label, color_util.ensure_hl(color) } },
         virt_text_pos = "inline",
       })
+      if catalog ~= "default" then
+        vim.api.nvim_buf_set_extmark(ctx.bufnr, ns, l, c - #catalog, {
+          end_col = c,
+          hl_group = color_util.ensure_fg_hl(color),
+        })
+      end
     end
   end
 end
