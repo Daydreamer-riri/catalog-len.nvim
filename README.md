@@ -31,21 +31,25 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 {
   -- Enable the plugin
   enabled = true,
-  -- Debounce time in milliseconds for virtual text updates
-  debounce = 200,
-  -- Virtual text style
-  virtual_text = {
-    prefix = " ",
-    hl_group = "Comment",
-  },
+  -- Control whether to use color in nvim_buf_set_extmark
+  namedCatalogsColors = true,
+  -- Control whether to use custom rendering for hint
+  useOriginalInlayHint = false,
 }
 ```
 
 ## 🚀 Usage
 
-The plugin will automatically detect package catalogs and show inline
-version information.
+The plugin will automatically detect package catalogs and show inline version information.
+
+### Commands
+
+You can use the following Lua functions to control the plugin:
+
+- `require("catalog-lens").enable()`: Enable the plugin and LSP.
+- `require("catalog-lens").disable()`: Disable the plugin and LSP.
+- `require("catalog-lens").toggle()`: Toggle the plugin state.
 
 ## 📝 License
 
-MIT
+[MIT](./LICENSE)

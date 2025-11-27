@@ -37,13 +37,10 @@ Default configuration: >lua
     {
       -- Enable the plugin
       enabled = true,
-      -- Debounce time in milliseconds for virtual text updates
-      debounce = 200,
-      -- Virtual text style
-      virtual_text = {
-        prefix = " ",
-        hl_group = "Comment",
-      },
+      -- Control whether to use color in nvim_buf_set_extmark
+      namedCatalogsColors = true,
+      -- Control whether to use custom rendering for hint
+      useOriginalInlayHint = false,
     }
 <
 
@@ -52,6 +49,17 @@ Default configuration: >lua
 
 The plugin will automatically detect package catalogs and show inline
 version information.
+
+API Functions:
+
+require("catalog-lens").enable()
+    Enable the plugin and LSP.
+
+require("catalog-lens").disable()
+    Disable the plugin and LSP.
+
+require("catalog-lens").toggle()
+    Toggle the plugin state.
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:
